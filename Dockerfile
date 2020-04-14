@@ -7,7 +7,8 @@ ENV LANG=C.UTF-8
 
 # Install needed modules
 RUN apk update && apk upgrade && \
-    apk add --no-cache bash git openssh go rsync npm yarn
+    apk add --no-cache bash git openssh go rsync npm yarn && \
+    rm  -rf /tmp/* /var/cache/apk/*
 
 # Go config
 RUN mkdir -p /go/src /go/bin && chmod -R 777 /go
