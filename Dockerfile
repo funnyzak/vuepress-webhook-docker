@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-LABEL maintainer="potato" \
+LABEL maintainer="potato<silenceace@gmail.com>" \
         org.label-schema.name="webhook"
 
 ENV LANG=C.UTF-8
