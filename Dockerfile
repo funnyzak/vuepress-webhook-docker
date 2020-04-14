@@ -1,17 +1,23 @@
-FROM golang
+FROM alpine:latest
 
 LABEL maintainer="potato" \
-        org.label-schema.name="vuepress-web"
+        org.label-schema.name="webhook"
 
 ENV LANG=C.UTF-8
 
 # Install needed modules
-RUN apt-get update
-RUN apt-get install -y git ssh bash rsync
+RUN apk update && apk upgrade && \
+    apk add --no-cache bash git openssh go rsync npm yarn
 
-RUN curl -sL https://deb.nodesource.com/setup_13.x | bash -
-RUN apt-get update && apt-get install -y nodejs
+# Go config
+RUN mkdir -p /go/src /go/bin && chmod -R 777 /go
+ENV GOPATH /go
+ENV PATH /go/bin:$PATH
 
+# nodejs
+RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/v3.11/main/ nodejs=12.15.0-r1
+
+# Install webhook
 RUN mkdir -p /app/hook \
     && go get github.com/adnanh/webhook
 

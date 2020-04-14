@@ -1,5 +1,5 @@
   
-#!/bin/sh
+#!/bin/ash
 
 mkdir -p -m 0700 /root/.ssh
 mkdir -p -m 0700 /app/code
