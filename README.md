@@ -1,4 +1,4 @@
-# vuepress docker
+# Vuepress Webhook Docker
 Pull your vuepress project Git code into a data volume and trigger automatic packaging via Webhook.
 
 #### [Docker hub image: funnyzak/vuepress-webhook](https://hub.docker.com/r/funnyzak/vuepress-webhook)
@@ -18,12 +18,15 @@ The following flags are a list of all the currently supported options that can b
  - **GIT_EMAIL** : Set your email for code pushing (required for git to work)
  - **GIT_NAME** : Set your name for code pushing (required for git to work)
  
-## Volume
+## Volume Configuration
 
  - **/app/code** : vuepress output dir.
  - **/app/output** : source code dir. Will automatically pull the code.
  - **/root/.ssh** :  If it is a private repository, please set ssh key
 
+#### ssh-keygen
+
+`ssh-keygen -t rsa -b 4096 -C "youremail@gmail.com" -N "" -f ./id_rsa`
 
 ---
 
@@ -31,10 +34,10 @@ The following flags are a list of all the currently supported options that can b
  ```
 version: '3'
 services:
-  vuepress:
+  vuepress_blog:
     image: funnyzak/vuepress-webhook
     privileged: true
-    container_name: vuepress
+    container_name: vuepress_blog
     working_dir: /app/hook
     logging:
       driver: 'json-file'
@@ -59,7 +62,7 @@ services:
  ```
 ---
 
- ## Nginx
+## Nginx
 
  ```
 server {
@@ -85,3 +88,5 @@ server {
 }
 
  ```
+
+Please configure according to the actual deployment path and port.
