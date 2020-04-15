@@ -9,7 +9,6 @@ mkdir -p -m 0700 /app/output
 rm -f /root/.ssh/config
 echo -e "Host *\n\tStrictHostKeyChecking no\n" >> /root/.ssh/config
 
-
 # SSH key
 chmod 600 /root/.ssh/id_rsa
 
@@ -37,7 +36,7 @@ if [ ! -d "/app/code/.git" ];then
     chown -Rf root:root /app/code/*
   else
     # if git repo not defined, pull from default repo:
-    git clone  --recursive -b production git@github.com:vuejs/vuepress.git /app/code/
+    git clone  --recursive -b production https://github.com/vuejs/vuepress.git /app/code/
     # remove git files
     rm -rf /app/code/.git
   fi
