@@ -6,7 +6,8 @@ mkdir -p -m 0700 /app/code
 mkdir -p -m 0700 /app/output
 
 # Disable Strict Host checking for non interactive git clones
-echo "Host *\n\tStrictHostKeyChecking no\n" >> /root/.ssh/config
+rm -f /root/.ssh/config
+echo -e "Host *\n\tStrictHostKeyChecking no\n" >> /root/.ssh/config
 
 
 # SSH key
