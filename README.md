@@ -1,11 +1,22 @@
 # Vuepress Webhook Docker
+
 Pull your vuepress project Git code into a data volume and trigger automatic packaging via Webhook.
 
-#### [Docker hub image: funnyzak/vuepress-webhook](https://hub.docker.com/r/funnyzak/vuepress-webhook)
+[![Docker Stars](https://img.shields.io/docker/stars/funnyzak/vuepress-webhook.svg?style=flat-square)](https://hub.docker.com/r/funnyzak/vuepress-webhook/)
+[![Docker Pulls](https://img.shields.io/docker/pulls/funnyzak/vuepress-webhook.svg?style=flat-square)](https://hub.docker.com/r/funnyzak/vuepress-webhook/)
 
-#### Webhook URL: http://hostname:9000/hooks/vuepress-webhook
+This image is based on Alpine Linux image, which is a 163MB image.
 
-#### Pull Command: `docker pull funnyzak/vuepress-webhook`
+Download size of this image is:
+
+[![](https://images.microbadger.com/badges/image/funnyzak/vuepress-webhook.svg)](http://microbadger.com/images/funnyzak/vuepress-webhook "Get your own image badge on microbadger.com")
+
+[Docker hub image: funnyzak/vuepress-webhook](https://hub.docker.com/r/funnyzak/vuepress-webhook)
+
+Docker Pull Command: `docker pull funnyzak/vuepress-webhook`
+
+Webhook Url: http://hostname:9000/hooks/vuepress-webhook
+
 ---
 
 ## Available Configuration Parameters
