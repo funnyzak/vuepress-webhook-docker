@@ -48,8 +48,8 @@ if [ -n "$USE_HOOK" ]; then
     echo "start hook..."
     /go/bin/webhook -hooks /app/hook/hooks.json -verbose
 else
-    sh sh /app/hook/webhook.sh
-    while sleep 23h; do sh sh /app/hook/webhook.sh; done
+    sh /app/hook/webhook.sh
+    while sleep 23h; do sh /app/hook/webhook.sh; done
 fi
 
 
