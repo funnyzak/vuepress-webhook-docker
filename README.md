@@ -23,17 +23,21 @@ Webhook Url: [http://hostname:9000/hooks/vuepress-webhook](#)
 
 The following flags are a list of all the currently supported options that can be changed by passing in the variables to docker with the -e flag.
 
-- **USE_HOOK** : The web hook is enabled as long as this is present.
-- **GIT_REPO** : URL to the repository containing your source code
-- **GIT_BRANCH** : Select a specific branch (optional)
-- **GIT_EMAIL** : Set your email for code pushing (required for git to work)
-- **GIT_NAME** : Set your name for code pushing (required for git to work)
+* **USE_HOOK** : The web hook is enabled as long as this is present.
+* **GIT_REPO** : URL to the repository containing your source code
+* **GIT_BRANCH** : Select a specific branch (optional)
+* **GIT_EMAIL** : Set your email for code pushing (required for git to work)
+* **GIT_NAME** : Set your name for code pushing (required for git to work)
+* **WEBHOOK_LIST** : Optional. Notify link array that send notifications when pull code, each link is separated by **|**
+* **HOOK_NAME** : Optional. When setting **WEBHOOK_LIST**, it is best to set a HOOK name
+
+---
 
 ## Volume Configuration
 
-- **/app/output** : vuepress packaged output destination folder.
-- **/app/code** : source code dir. Will automatically pull the code.
-- **/root/.ssh** :  If it is a private repository, please set ssh key
+* **/app/target** :  builded code files will move to this folder.
+* **/app/code** : source code dir. Will automatically pull the code.
+* **/root/.ssh** :  If it is a private repository, please set ssh key
 
 ### ssh-keygen
 
@@ -64,11 +68,13 @@ services:
       - GIT_BRANCH=master
       - GIT_EMAIL=youremail
       - GIT_NAME=yourname
+      - WEBHOOK_LIST=http://link1.com/hook|http://link2.com/hook
+      - HOOK_NAME=vuepress_app
     restart: on-failure
     ports:
       - 9000:9000 # webhook port
     volumes:
-      - ./output:/app/output
+      - ./target:/app/target
       - ./code:/app/code
       - ./ssh:/root/.ssh
 
@@ -87,7 +93,7 @@ server {
     ssl off;
 
     location / {
-        root   /mnt/app/vuepress/output;
+        root   /mnt/app/vuepress/target;
         index  index.html index.htm;
     }
 

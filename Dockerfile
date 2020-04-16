@@ -13,9 +13,10 @@ LABEL org.label-schema.vendor="potato<silenceace@gmail.com>" \
     org.label-schema.vcs-ref="${VCS_REF}" \
     org.label-schema.vcs-url="https://github.com/funnyzak/vuepress-webhook-docker" 
 
-ENV STARTUP_COMMANDS mkdir -p /app/output
-ENV AFTER_PULL_COMMANDS npm install && npm run build && rsync -q -r --delete .vuepress/dist/ /app/output/
-ENV BEFORE_PULL_COMMANDS mkdir -p /app/output
+
+ENV BUILD_COMMAND npm run build
+ENV INSTALL_DEPS_COMMAND npm install
+ENV OUTPUT_DIRECTORY .vuepress/dist/
 
 # Copy Webhook config
 COPY hooks.json /app/hook/hooks.json
