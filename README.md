@@ -65,7 +65,6 @@ services:
       - GIT_EMAIL=youremail
       - GIT_NAME=yourname
     restart: on-failure
-    # 映射端口
     ports:
       - 9000:9000 # webhook port
     volumes:
