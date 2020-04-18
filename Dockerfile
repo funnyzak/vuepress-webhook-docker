@@ -17,9 +17,3 @@ LABEL org.label-schema.vendor="potato<silenceace@gmail.com>" \
 ENV BUILD_COMMAND npm run build
 ENV INSTALL_DEPS_COMMAND npm install
 ENV OUTPUT_DIRECTORY .vuepress/dist/
-
-# Copy Webhook config
-COPY hooks.json /app/hook/hooks.json
-
-# Expose Webhook port
-EXPOSE 9000

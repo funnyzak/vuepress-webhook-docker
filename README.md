@@ -15,7 +15,9 @@ Download size of this image is:
 
 Docker Pull Command: `docker pull funnyzak/vuepress-webhook`
 
-Webhook Url: [http://hostname:9000/hooks/vuepress-webhook](#)
+Visit Url: [http://hostname:80/](#)
+
+Webhook Url: [http://hostname:80/hooks/git-webhook](#)
 
 ---
 
@@ -72,7 +74,7 @@ services:
       - HOOK_NAME=vuepress_app
     restart: on-failure
     ports:
-      - 9000:9000 # webhook port
+      - 80:80
     volumes:
       - ./target:/app/target
       - ./code:/app/code
@@ -81,32 +83,5 @@ services:
  ```
 
 ---
-
-## Nginx
-
- ```nginx
-server {
-    listen       80;
-    server_name  yourdomain.com;
-
-    underscores_in_headers on;
-    ssl off;
-
-    location / {
-        root   /mnt/app/vuepress/target;
-        index  index.html index.htm;
-    }
-
-    location /webhook {
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-Ip $remote_addr;
-        proxy_set_header X-Forwarded-For $remote_addr;
-        proxy_pass http://127.0.0.1:9000/hooks/vuepress-webhook;
-    }
-
-    error_page  404   /404.html;
-}
-
- ```
 
 Please configure according to the actual deployment path and port.
