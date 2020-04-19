@@ -17,7 +17,7 @@ Docker Pull Command: `docker pull funnyzak/vuepress-webhook`
 
 Visit Url: [http://hostname:80/](#)
 
-Webhook Url: [http://hostname:80/hooks/git-webhook](#)
+Webhook Url: [http://hostname:9000/hooks/git-webhook?token=HOOK_TOKEN](#)
 
 ---
 
@@ -26,6 +26,7 @@ Webhook Url: [http://hostname:80/hooks/git-webhook](#)
 The following flags are a list of all the currently supported options that can be changed by passing in the variables to docker with the -e flag.
 
 * **USE_HOOK** : The web hook is enabled as long as this is present.
+* **HOOK_TOKEN** : Custom hook security tokens, strings.
 * **GIT_REPO** : URL to the repository containing your source code
 * **GIT_BRANCH** : Select a specific branch (optional)
 * **GIT_EMAIL** : Set your email for code pushing (required for git to work)
@@ -74,8 +75,13 @@ services:
       - GIT_BRANCH=master
       - GIT_EMAIL=youremail
       - GIT_NAME=yourname
-      - WEBHOOK_LIST=http://link1.com/hook|http://link2.com/hook
-      - HOOK_NAME=vuepress_app
+      - AFTER_PACKAGE_COMMANDS=echo "elapsed time: $(cat /tmp/ELAPSED_TIME_LABEL)"
+      - APP_NAME=vuepress_app
+      - NOTIFY_ACTION_LABEL=已启动|准备拉取代码|代码已拉取|打包部署完成
+      - NOTIFY_ACTION_LIST=StartUp|BeforePull|AfterPull|AfterPackage
+      - NOTIFY_URL_LIST=https://request.worktile.com/asdfsfwe
+      - IFTTT_HOOK_URL_LIST=https://maker.ifttt.com/trigger/event_name/with/keyhelloworld
+      - DINGTALK_TOKEN_LIST=sldfj2hr923rsf2938u4sdfsf|lsdf203sjdf
     restart: on-failure
     ports:
       - 80:80
