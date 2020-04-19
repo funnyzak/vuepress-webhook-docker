@@ -30,9 +30,13 @@ The following flags are a list of all the currently supported options that can b
 * **GIT_BRANCH** : Select a specific branch (optional)
 * **GIT_EMAIL** : Set your email for code pushing (required for git to work)
 * **GIT_NAME** : Set your name for code pushing (required for git to work)
-* **WEBHOOK_LIST** : Optional. Notify link array that send notifications when pull code, each link is separated by **|**
-* **HOOK_NAME** : Optional. When setting **WEBHOOK_LIST**, it is best to set a HOOK name
-
+* **NOTIFY_ACTION_LABEL**: Optional. notify action name define. default : `StartUp|BeforePull|AfterPull|AfterPackage`
+* **NOTIFY_ACTION_LIST**: Optional. notify action list. included events will be notified. default : `BeforePull|AfterPackage`
+* **NOTIFY_URL_LIST** : Optional. Notify link array , each separated by **|**
+* **IFTTT_HOOK_URL_LIST** : Optional. ifttt webhook url array , each separated by **|**
+* **DINGTALK_TOKEN_LIST**: Optional. DingTalk Bot TokenList, each separated by **|**
+* **APP_NAME** : Optional. When setting notify, it is best to set.
+  
 ---
 
 ## Volume Configuration
