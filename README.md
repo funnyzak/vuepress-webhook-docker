@@ -17,7 +17,7 @@ Docker Pull Command: `docker pull funnyzak/vuepress-webhook`
 
 Visit Url: [http://hostname:80/](#)
 
-Webhook Url: [http://hostname:9000/hooks/git-webhook?token=HOOK_TOKEN](#)
+Webhook Url: [http://hostname:80/hooks/git-webhook?token=HOOK_TOKEN](#)
 
 ---
 
