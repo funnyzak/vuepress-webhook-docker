@@ -1,4 +1,4 @@
-FROM funnyzak/git-webhook-node-build
+FROM funnyzak/git-webhook-node-deploy
 
 ARG BUILD_DATE
 ARG VCS_REF
